@@ -17,7 +17,10 @@ export default function fetchFeed() {
         const statements = json.statements.map(statement => {
           return {
             actor: statement.actor,
-            verb: statement.verb,
+            verb: {
+              id: statement.verb.id,
+              display: statement.verb.display[Object.keys(statement.verb.display)[0]],
+            },
             result: statement.result,
             context: statement.context,
           };
