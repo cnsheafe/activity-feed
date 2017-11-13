@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div>{{content.actor.name}}</div>
+    <img src="" alt="">
+    <div class="statement-text">
+      <a :href="content.actor.mbox">{{content.actor.name}}</a>
+      <span>{{content.verb.display}}</span>
+
+    </div>
+
   </div>
 </template>
 
