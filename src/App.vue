@@ -22,27 +22,6 @@ export default {
     fetchFeed().then(feed => {
       this.statements = feed;
     });
-    // fetch('https://playposit-activity-feed.herokuapp.com/feed', {
-    //   method: 'GET',
-    //   cache: 'default',
-    // })
-    // .then(res => {
-    //   if (res.status !== 200) {
-    //     throw res;
-    //   }
-    //   return res.json();
-    // })
-    // .then(json => {
-    //   let statements;
-    //   try {
-    //     statements = json.statements;
-    //   } catch (err) {
-    //     throw err;
-    //   }
-    // })
-    // .catch(err => {
-    //   console.error(err);
-    // });
   },
 };
 </script>
