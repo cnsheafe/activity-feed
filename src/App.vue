@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <statement-feed :feed="statements"/>
+    <statement-feed v-if="statements.length" :feed="statements"/>
   </div>
 </template>
 
@@ -13,8 +13,10 @@ export default {
   components: {
     StatementFeed,
   },
-  data: {
-    statements: [{}],
+  data() {
+    return {
+      statements: [],
+    };
   },
   created() {
     fetchFeed().then(feed => {

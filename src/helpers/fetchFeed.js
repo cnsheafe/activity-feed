@@ -23,6 +23,7 @@ export default function fetchFeed() {
             },
             result: statement.result,
             context: statement.context,
+            object: statement.object,
           };
         });
         return statements;
