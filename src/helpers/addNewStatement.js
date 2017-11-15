@@ -1,3 +1,5 @@
+import parseStatement from './parseStatement';
+
 require('es6-promise').polyfill();
 const fetch = require('isomorphic-fetch');
 
@@ -9,22 +11,21 @@ export default function addNewStatement() {
   })
     .then(res => {
       if (res.status !== 200) {
-        throw res;
+        throw {
+          res,
+          msg: 'Error in sending statement',
+        };
       }
       return res.json();
     })
-    .then(id => {
-      return fetch(`${baseUrl}/feed?id=${id}`, {
+    .then(statementIds => statementIds[0])
+    .then(id =>
+      fetch(`${baseUrl}/feed?id=${id}`, {
         method: 'GET',
-      });
-    })
-    .then(res => {
-      if (res.status !== 200) {
-        throw res;
-      }
-      return res.json();
-    })
-    .then(statement => statement)
+      }),
+    )
+    .then(res => res.json())
+    .then(statement => parseStatement(statement))
     .catch(err => {
       console.error(err);
     });

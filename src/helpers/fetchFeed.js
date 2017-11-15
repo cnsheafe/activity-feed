@@ -1,3 +1,5 @@
+import parseStatement from './parseStatement';
+
 require('es6-promise').polyfill();
 const fetch = require('isomorphic-fetch');
 
@@ -14,18 +16,9 @@ export default function fetchFeed() {
     })
     .then(json => {
       try {
-        const statements = json.statements.map(statement => {
-          return {
-            actor: statement.actor,
-            verb: {
-              id: statement.verb.id,
-              display: statement.verb.display[Object.keys(statement.verb.display)[0]],
-            },
-            result: statement.result,
-            context: statement.context,
-            object: statement.object,
-          };
-        });
+        const statements = json.statements.map(statement =>
+          parseStatement(statement),
+        );
         return statements;
       } catch (err) {
         throw err;
