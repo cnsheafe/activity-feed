@@ -1,17 +1,20 @@
 <template>
   <div id="app">
     <statement-feed v-if="statements.length" :feed="statements"/>
+    <statement-button/>
   </div>
 </template>
 
 <script>
 import StatementFeed from './components/StatementFeed';
+import StatementButton from './components/StatementButton';
 import fetchFeed from './helpers/fetchFeed';
 
 export default {
   name: 'app',
   components: {
     StatementFeed,
+    StatementButton
   },
   data() {
     return {
@@ -22,27 +25,6 @@ export default {
     fetchFeed().then(feed => {
       this.statements = feed;
     });
-    // fetch('https://playposit-activity-feed.herokuapp.com/feed', {
-    //   method: 'GET',
-    //   cache: 'default',
-    // })
-    // .then(res => {
-    //   if (res.status !== 200) {
-    //     throw res;
-    //   }
-    //   return res.json();
-    // })
-    // .then(json => {
-    //   let statements;
-    //   try {
-    //     statements = json.statements;
-    //   } catch (err) {
-    //     throw err;
-    //   }
-    // })
-    // .catch(err => {
-    //   console.error(err);
-    // });
   },
 };
 </script>

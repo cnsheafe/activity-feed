@@ -20,5 +20,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-
+ul
+  margin-bottom: 90px;
 </style>
