@@ -1,17 +1,20 @@
 <template>
   <div id="app">
     <statement-feed v-if="statements.length" :feed="statements"/>
+    <statement-button/>
   </div>
 </template>
 
 <script>
 import StatementFeed from './components/StatementFeed';
+import StatementButton from './components/StatementButton';
 import fetchFeed from './helpers/fetchFeed';
 
 export default {
   name: 'app',
   components: {
     StatementFeed,
+    StatementButton
   },
   data() {
     return {
