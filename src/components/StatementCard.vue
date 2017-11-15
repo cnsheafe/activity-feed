@@ -109,7 +109,7 @@ img {
   height: 100%;
   align-self: center;
   position: relative;
-  font-size: 20px;
+  font-size: 18px;
 }
 .card {
   height: 125px;
